@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+.linebr {
+  border: 1px solid black;
+}
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+  max-height: max-content;
+  font-family: 'Urbanist', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.cont {
+  padding: 0;
+  margin: 0;
+}
+
+span{
+  font-weight: 800;
+}
+
+.header {
+  padding: 1rem 1rem;
+}
+
+.content {
+  padding: 0.5rem;
+  margin: 0;
+}
+
+textarea
+
+input:hover,
+button:hover {
+  box-shadow: 0 0 5px 1px #a8a8a8;
+}
+
+.video {
+  width: max-content;
+  height: max-content;
+}
