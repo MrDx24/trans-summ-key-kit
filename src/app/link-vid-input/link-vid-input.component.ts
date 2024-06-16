@@ -37,13 +37,13 @@ export class LinkVidInputComponent {
 
     this.url = lf.value.link;
 
-    this.http.get<any>(this.url).subscribe(
-      (response) => {
+    this.http.post("http://127.0.0.1:5000/api/v1/translate",{"video_url":this.url}).subscribe(
+      (response: any) => {
 
-        console.log("Response received:", response[0]);
+        console.log("Response received:", response);
 
-        if (response.length > 0) {
-          this.trspt = response[0].transcript;
+        if (response) {
+          this.trspt = response.translated;
           this.success = true;
         } else {
           console.error("Response is empty");
@@ -59,14 +59,14 @@ export class LinkVidInputComponent {
 
   getsumkey() {
 
-    this.http.post(this.url, this.trspt).subscribe(
+    this.http.post("http://127.0.0.1:5000/api/v1/generate/summary_keywords", {"transcript":this.trspt}).subscribe(
       (response:any) => {
 
-        console.log("Response received:", response[0]);
+        console.log("Response received:", response);
 
-        if (response.length > 0) {
+        if (response) {
           this.summ = response.summary;
-          this.keyw= response.keys;
+          this.keyw = response.keywords;
           this.success1 = true;
         } else {
           console.error("Response is empty");
