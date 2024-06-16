@@ -12,13 +12,22 @@
         <form class="inputlink formGroup" [formGroup]="linkForm">
           <input class="form-control" type="text"  formControlName="link" name="link" id="link">
           <button class="btn btn-primary mt-1" (click)="getData()">Convert from Link</button>
+          <div *ngIf="load" class="spinner-border text-primary mt-2 ms-2" role="status">
+            <span class="visually-hidden">Translating...</span>
+          </div>
+          
         </form>
       </div>
       <div *ngIf="success" class="mt-2 col6">
         <hr>
         <h5>Translated result: </h5>
         <textarea class="form-control" name="transcript" id="transcript" [value]="trspt" rows="8" readonly></textarea>
-        <button class="btn btn-success mt-1" (click)="getsumkey()">Generate Summary with keywords</button>
+        <div>
+          <button class="btn btn-success mt-1" (click)="getsumkey()">Generate Summary with keywords</button>
+          <div *ngIf="load1" class="spinner-border text-success mt-2 ms-2" role="status">
+            <span class="visually-hidden">Summarizing...</span>
+          </div>
+        </div>
       </div>
       <div *ngIf="success1" class="video mt-2 col6">
         <hr>

@@ -16,6 +16,8 @@ export class LinkVidInputComponent {
   linkForm! : FormGroup; // create form group
   success: boolean = false;
   success1: boolean = false;
+  load: boolean = false;
+  load1: boolean = false
   trspt: any;
   url : any;
   summ:any
@@ -37,6 +39,8 @@ export class LinkVidInputComponent {
 
     this.url = lf.value.link;
 
+    this.load = true;
+
     this.http.post("http://127.0.0.1:5000/api/v1/translate",{"video_url":this.url}).subscribe(
       (response: any) => {
 
@@ -49,6 +53,7 @@ export class LinkVidInputComponent {
           console.error("Response is empty");
           this.success = false;
         }
+        this.load = false;
       },
       (error) => {
         console.error("Error occurred:", error);
@@ -58,6 +63,7 @@ export class LinkVidInputComponent {
   }
 
   getsumkey() {
+    this.load1 = true;
 
     this.http.post("http://127.0.0.1:5000/api/v1/generate/summary_keywords", {"transcript":this.trspt}).subscribe(
       (response:any) => {
@@ -68,6 +74,7 @@ export class LinkVidInputComponent {
           this.summ = response.summary;
           this.keyw = response.keywords;
           this.success1 = true;
+          this.load1 = false;
         } else {
           console.error("Response is empty");
           this.success1 = false;
